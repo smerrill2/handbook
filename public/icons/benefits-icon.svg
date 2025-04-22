@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" image-rendering="pixelated">
+  <!-- 8-bit style calendar -->
+  <!-- Outline -->
+  <rect x="4" y="6" width="24" height="22" fill="#9b59b6"/>
+  <!-- Rings -->
+  <rect x="8" y="2" width="4" height="6" fill="#9b59b6"/>
+  <rect x="20" y="2" width="4" height="6" fill="#9b59b6"/>
+  <!-- Paper -->
+  <rect x="6" y="10" width="20" height="16" fill="#f5e8c8"/>
+  <!-- Header bar -->
+  <rect x="6" y="10" width="20" height="4" fill="#d3c1a4"/>
+  <!-- Grid lines (simplified) -->
+  <rect x="10" y="16" width="2" height="8" fill="#d3c1a4"/>
+  <rect x="15" y="16" width="2" height="8" fill="#d3c1a4"/>
+  <rect x="20" y="16" width="2" height="8" fill="#d3c1a4"/>
+  <rect x="6" y="19" width="20" height="2" fill="#d3c1a4"/>
+</svg> 
