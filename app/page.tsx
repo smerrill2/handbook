@@ -67,7 +67,7 @@ const chapters = [
 ];
 
 // Flatten chapters into a single array for navigation
-const menuItems = chapters.flatMap(chapter => {
+const menuItems: MenuItem[] = chapters.flatMap(chapter => {
   // Insert a chapter title section before the actual content sections
   return [
     { href: `#chapter-${chapter.id}`, label: `Chapter: ${chapter.title}`, icon: chapter.icon, isChapter: true },
@@ -76,7 +76,12 @@ const menuItems = chapters.flatMap(chapter => {
 });
 
 // Add the Creator section at the very end
-menuItems.push({ href: "#creator", label: "Meet the Creator", isCreatorSection: true });
+const creatorSection: MenuItem = { 
+  href: "#creator", 
+  label: "Meet the Creator", 
+  isCreatorSection: true 
+};
+menuItems.push(creatorSection);
 
 // Local storage key
 // Removed unused UNLOCKED_SECTIONS_KEY variable assignment
