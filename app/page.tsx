@@ -402,6 +402,13 @@ export default function Home() {
   const [isShowingBook, setIsShowingBook] = useState<boolean>(false);
   const [overrideBgImage, setOverrideBgImage] = useState<string | null>(null); // State for intermediate BG
 
+  // NEW: Function to trigger the start sequence
+  const triggerStartSequence = useCallback(() => {
+    if (hasStarted) return; // Prevent multiple triggers
+    setCurrentSectionIndex(0);
+    setHasStarted(true);
+  }, [hasStarted]); // Dependencies: hasStarted
+
   // --- Core Effects ---
   useEffect(() => { // localStorage Effect
     setIsLoaded(true);
@@ -413,8 +420,7 @@ export default function Home() {
     const handleStartKey = (event: KeyboardEvent) => {
       if (event.key === 'Enter') {
         event.preventDefault();
-        setCurrentSectionIndex(0);
-        setHasStarted(true);
+        triggerStartSequence(); // Call the new function
       }
     };
     window.addEventListener('keydown', handleStartKey);
@@ -422,7 +428,7 @@ export default function Home() {
     return () => {
       window.removeEventListener('keydown', handleStartKey);
     };
-  }, [hasStarted]); // Re-added dependency
+  }, [hasStarted, triggerStartSequence]); // Re-added dependency, added triggerStartSequence
 
   // Effect to Trigger Initial Fade-in Animations when Game Starts
   useEffect(() => {
@@ -541,8 +547,9 @@ export default function Home() {
   if (!hasStarted) {
     return (
       <div 
-        className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center font-pixel text-center p-4"
+        className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center font-pixel text-center p-4 cursor-pointer" // Added cursor-pointer
         style={{ backgroundImage: `url('/Background_1.png')` }} // Use first background
+        onClick={triggerStartSequence} // Added onClick handler
       >
         <div className="bg-black bg-opacity-50 p-8 rounded-lg shadow-xl">
           <div className="animate-pulse">
